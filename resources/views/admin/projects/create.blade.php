@@ -23,11 +23,12 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <label for="type" class="form-label">Categoria:</label>
-                            <select name="type" id="type" class="form-control @error('type') is-invalid @enderror">
+                            <label for="type_id" class="form-label">Categoria:</label>
+                            <select name="type_id" id="type_id"
+                                class="form-control @error('type_id') is-invalid @enderror">
                                 <option value="" disabled selected>-Seleziona la categoria-</option>
                                 @foreach ($types as $type)
-                                    <option value="{{ $type->id }}">{{ $type->name }}
+                                    <option value="{{ $type->id }}" @selected($type->id == old('type_id'))>{{ $type->name }}
                                     </option>
                                 @endforeach
                             </select>

@@ -30,7 +30,8 @@ class UpdateProjectRequest extends FormRequest
             'description' => ['nullable', 'max:500'],
             'start_date' => ['required', 'date'],
             'end_date' => ['nullable', 'date', 'after_or_equal:start_date'],
-            'cover_project_image' => ['image', 'max:4084']
+            'cover_project_image' => ['image', 'max:4084'],
+            'type_id' => ['nullable', Rule::exists('types', 'id')],
         ];
     }
     public function messages()
@@ -43,6 +44,7 @@ class UpdateProjectRequest extends FormRequest
             'start_date.required' => 'Data obbligatoria',
             'end_date.required' => 'Data obbligatoria',
             'cover_project_image.max' => 'Il file non deve superare i 4 MB',
+            'type_id.exists' => 'Questa categoria non esiste',
         ];
     }
 }

@@ -13,7 +13,7 @@ class StoreTypeRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class StoreTypeRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:types|max:150',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'Titolo obbligatorio',
+            'name.unique' => 'Questo titolo esiste già',
+            'name.max' => 'Superato il numero massimo di caratteri (150)',
         ];
     }
 }

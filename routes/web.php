@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\ProjectController as ProjectController;
+use App\Http\Controllers\Admin\FilterTypeController as FilterTypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     route::resource('/projects', ProjectController::class);
     Route::get('/{project}/edit', [ProjectController::class, 'edit'])->name('edit');
+    Route::get('/projects/type/{type}', [FilterTypeController::class, 'index'])->name('projects.indexByType');
 });
 
 Route::middleware('auth')->group(function () {

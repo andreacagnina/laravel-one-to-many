@@ -31,6 +31,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>Categoria</th>
                                     <th>Nome</th>
                                     <th>Descrizione</th>
                                     <th>Slug</th>
@@ -42,6 +43,7 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <th>{{ $project->type->name ?? 'NC' }}</th>
                                     <td>{{ $project->name }}</td>
                                     <td>{{ $project->description }}</td>
                                     <td>{{ $project->slug }}</td>
