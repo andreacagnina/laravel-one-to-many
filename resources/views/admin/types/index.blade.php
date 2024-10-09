@@ -4,7 +4,7 @@
     <div class="container my-3">
         <div class="row">
             <div class="d-grid col-12">
-                <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Add a New project</a>
+                <a href="{{ route('admin.types.create') }}" class="btn btn-primary">Add a New Type</a>
             </div>
         </div>
         @if (session('success'))
@@ -18,13 +18,14 @@
                 </div>
             </div>
         @endif
-        <div class="row">
+        <div class="row center">
             <div class="col-12">
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Nome</th>
                             <th>Slug</th>
+                            <th class="text-center">Tools</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +34,7 @@
                                 <td>{{ $type->name }}</td>
                                 <td>{{ $type->slug }}</td>
                                 <td>
-                                    <div class="d-flex">
+                                    <div class="d-flex justify-content-center">
                                         <a class="btn btn-outline-warning mx-1"
                                             href="{{ route('admin.types.edit', ['type' => $type->id]) }}"><i
                                                 class="fa-solid fa-pen-to-square"></i></a>
@@ -42,8 +43,8 @@
                                             method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-outline-danger delete"
-                                                data-typeName="{{ $type->name }}"><i class="fa-solid fa-trash"></i>
+                                            <button type="submit" class="btn btn-outline-danger TypeDelete"
+                                                data-TypeName="{{ $type->name }}"><i class="fa-solid fa-trash"></i>
                                         </form>
                                     </div>
                                 </td>
@@ -54,5 +55,5 @@
             </div>
         </div>
     </div>
-    @include('admin.projects.partials.modal_delete')
+    @include('admin.types.partials.modal_delete')
 @endsection

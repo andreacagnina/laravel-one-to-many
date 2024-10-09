@@ -22,7 +22,7 @@ class TypeSeeder extends Seeder
             $type->name = $faker->unique()->word;
             $type->slug = Str::slug($type->name, '-');
 
-            $type->$type->save();
+            $type->save();
         }
     }
 }

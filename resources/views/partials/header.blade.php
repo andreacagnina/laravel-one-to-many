@@ -22,6 +22,10 @@
                         <a class="nav-link {{ Route::currentRouteName() === 'admin.projects.index' ? 'fw-bold' : '' }}"
                             href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Route::currentRouteName() === 'admin.types.index' ? 'fw-bold' : '' }}"
+                            href="{{ route('admin.types.index') }}">{{ __('Types') }}</a>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

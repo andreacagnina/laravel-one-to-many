@@ -42,3 +42,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 });
+const delete_type_buttons = document.querySelectorAll('.TypeDelete');
+
+delete_type_buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const modal = document.getElementById('deleteTypeModal');
+
+        const bootstrap_modal = new bootstrap.Modal(modal);
+        bootstrap_modal.show();
+
+        const buttonDelete = modal.querySelector('.confirm-delete');
+
+        const TypeName = button.getAttribute('data-TypeName');
+
+        const ModalText = modal.querySelector('#modal_text');
+        ModalText.innerHTML = `Sei sicuro di volere cancellare questo progetto?<br><strong>${TypeName}</strong>`;
+
+        buttonDelete.addEventListener('click', function () {
+            button.parentElement.submit();
+        })
+    }
+    );
+});
