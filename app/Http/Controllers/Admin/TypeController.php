@@ -1,8 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\Type;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTypeRequest;
+use App\Http\Requests\UpdateTypeRequest;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -13,7 +18,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        return view("admin.types.index", compact("types"));
     }
 
     /**
@@ -23,7 +29,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.types.create", compact("types"));
     }
 
     /**
@@ -32,9 +38,13 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTypeRequest $request)
     {
-        //
+        $form_data = $request->validated();
+        $form_data['slug'] = Type::generateSlug($form_data['name']);
+
+        Type::create($form_data);
+        return redirect()->route('admin.types.index')->with('success', 'Categoria Creata');
     }
 
     /**
@@ -54,9 +64,9 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -66,9 +76,12 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $form_data = $request->validated();
+        $form_data['slug'] = Type::generateSlug($form_data['name']);
+        $type->update($form_data);
+        return redirect()->route('admin.types.index', ['type' => $type->id])->with("success", "Categoria Modificata");
     }
 
     /**
@@ -77,8 +90,9 @@ class TypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return redirect()->route("admin.types.index")->with("success", "Categoria Cancellata");
     }
 }

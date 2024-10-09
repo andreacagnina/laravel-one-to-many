@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\ProjectController as ProjectController;
 use App\Http\Controllers\Admin\FilterTypeController as FilterTypeController;
+use App\Http\Controllers\Admin\TypeController as TypeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,9 @@ Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(
     route::resource('/projects', ProjectController::class);
     Route::get('/{project}/edit', [ProjectController::class, 'edit'])->name('edit');
     Route::get('/projects/type/{type}', [FilterTypeController::class, 'index'])->name('projects.indexByType');
+
+    Route::resource('/types', TypeController::class);
+    Route::get('/{types}/edit', [TypeController::class, 'edit'])->name('edit');
 });
 
 Route::middleware('auth')->group(function () {

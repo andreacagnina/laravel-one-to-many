@@ -85,5 +85,6 @@
                 </div>
             </div>
         </div>
-        @include('admin.projects.partials.modal_delete')
-    @endsection
+    </div>
+    @include('admin.projects.partials.modal_delete')
+@endsection
