@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (successAlert) {
         setTimeout(function () {
-            successAlert.classList.add('fade-out');
+            successAlert.style.display = 'none';;
         }, 3000);
     }
 

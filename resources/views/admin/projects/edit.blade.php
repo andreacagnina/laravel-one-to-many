@@ -25,6 +25,22 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
+                            <label for="type_id" class="form-label">Categoria:</label>
+                            <select name="type_id" id="type_id"
+                                class="form-control @error('type_id') is-invalid @enderror">
+                                <option value="" disabled selected>-Seleziona la categoria-</option>
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}" @selected($type->id == old('type_id', $project->type ? $project->type->id : ''))>{{ $type->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('type_id')
+                                <div class="text-danger fs-6 small">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
                             <label for="description" class="form-label">Descrizione:</label>
                             <textarea name="description" id="description-project" cols="30" rows="5"
                                 class="form-control @error('description') is-invalid @enderror">{{ old('description', $project->description) }}</textarea>
