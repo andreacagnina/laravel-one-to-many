@@ -17,10 +17,12 @@ class Project extends Model
         'end_date',
         'cover_project_image',
     ];
+
     public static function generateSlug($name)
     {
         return Str::slug($name, '-');
     }
+
     public function type()
     {
         return $this->belongsTo(Type::class);
