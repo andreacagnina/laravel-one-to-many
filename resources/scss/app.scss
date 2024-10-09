@@ -1,0 +1,28 @@
+@import '@fortawesome/fontawesome-free/css/all.css';
+@import '~bootstrap/scss/bootstrap';
+
+
+.logo {
+    width: 50px;
+    aspect-ratio: 1 \ 1;
+}
+
+.col-12 label {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.w-h-cust {
+    width: 600px;
+    height: 400px;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.fade-out {
+    transition: opacity 3s ease-in-out;
+    opacity: 0;
+}
