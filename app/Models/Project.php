@@ -21,4 +21,8 @@ class Project extends Model
     {
         return Str::slug($name, '-');
     }
+    public function type()
+    {
+        return $this->belongsTo(Type::class);
+    }
 }
