@@ -28,11 +28,8 @@ Route::get('/', [HomeController::class, 'index'])->name('homepage');
 Route::middleware(['auth', 'verified'])->name('admin.')->prefix('admin')->group(function () {
     route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     route::resource('/projects', ProjectController::class);
-    Route::get('/{project}/edit', [ProjectController::class, 'edit'])->name('edit');
-    Route::get('/projects/type/{type}', [FilterTypeController::class, 'index'])->name('projects.indexByType');
-
     Route::resource('/types', TypeController::class);
-    Route::get('/{types}/edit', [TypeController::class, 'edit'])->name('edit');
+    Route::get('/projects/of_type/{type}', [FilterTypeController::class, 'index'])->name('filtered.projects');
 });
 
 Route::middleware('auth')->group(function () {

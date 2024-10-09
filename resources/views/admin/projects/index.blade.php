@@ -21,8 +21,10 @@
         <div class="row">
             <div class="col">
                 <div class="content text-center my-3">
+                    <a href="{{ route('admin.filtered.projects', ['type' => 'NC']) }}"
+                        class="btn btn-outline-secondary">NC</a>
                     @foreach ($types as $type)
-                        <a href="{{ route('admin.projects.indexByType', ['type' => $type->name]) }}"
+                        <a href="{{ route('admin.filtered.projects', ['type' => $type->name]) }}"
                             class="btn btn-outline-primary">{{ $type->name }}</a>
                     @endforeach
 
